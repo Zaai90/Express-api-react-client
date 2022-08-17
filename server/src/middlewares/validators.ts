@@ -21,7 +21,7 @@ function validateProduct(req:Request, res:Response, next:NextFunction) {
     }
   }
 
-  function validateProductId(req:Request, res:Response, next:NextFunction) {
+  function validateProductId(req:Request<{id:string}>, res:Response, next:NextFunction) {
     if(req.params.id) {
       if(products.find(product => product.id === req.params.id)) {
         next();

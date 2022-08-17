@@ -19,16 +19,16 @@ function getProducts (req:Request, res:Response) {
     } );
   }
   
-  function deleteProduct(req:Request, res:Response) {
+  function deleteProduct(req:Request<{id:string}>, res:Response) {
     res.status(200).json(deleteItem(req.params.id)).on('error', (err:any) => { console.log(err); } );
   }
   
-  function getProduct(req:Request, res:Response) {
+  function getProduct(req:Request<{id:string}>, res:Response) {
     res.status(200).json(getItem(req.params.id)).on('error', (err:any) => { console.log(err); } );
   }
   
   
-  function updateProduct(req:Request, res:Response) {
+  function updateProduct(req:Request<{id:string}>, res:Response) {
     updateItem(req.params.id, req.body);
     res.status(200).json("Ok");
   }
