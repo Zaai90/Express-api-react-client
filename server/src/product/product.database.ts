@@ -1,25 +1,25 @@
 import Product from './product.model';
 
-let products : Product[] = [];
+export let products : Product[] = [];
 
-export function getProducts() {
+export function getItems() {
     return products;
 }
 
-export function getProduct(id: number) {
+export function getItem(id: number) {
     return products.find(product => product.id === id);
 }
 
-export function createProduct(product: Product) {
+export function addItem(product: Product) {
     products.push(product);
 }
 
-export function updateProduct(id: number, product: Product) {
+export function updateItem(id: number, product: Product) {
     const index = products.findIndex(p => p.id === id);
     products[index] = product;
 }
 
-export function deleteProduct(id: number) {
+export function deleteItem(id: number) {
     const index = products.findIndex(p => p.id === id);
     products.splice(index, 1);
 }
