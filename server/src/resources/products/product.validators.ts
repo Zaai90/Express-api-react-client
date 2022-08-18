@@ -10,25 +10,9 @@ export function validateProductExist(
     next();
   } else {
     res.status(400).json({
-      message: "Object already exists",
+      message: "Product already exists",
     });
   }
-}
-
-export function validBody(req: Request, res: Response, next: NextFunction) {
-  //Todo check if props has valid types
-  if (req.body.name && req.body.price && checkPropLength(req.body)) {
-    next();
-  } else {
-    res.status(400).json({
-      message: "Invalid body",
-    });
-  }
-}
-
-function checkPropLength(body: Object) {
-  const bodyprops: string[] = Object.keys(body);
-  return bodyprops.length === 2;
 }
 
 export function validateProductId(
@@ -41,7 +25,7 @@ export function validateProductId(
       next();
     } else {
       res.status(204).json({
-        message: "Object not found",
+        message: "Product not found",
       });
     }
   } else {
