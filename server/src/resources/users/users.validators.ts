@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { users } from "./users.repository";
 
-export function validateProductExist(
+export function validateUserExist(
   req: Request,
   res: Response,
   next: NextFunction
@@ -15,23 +15,29 @@ export function validateProductExist(
   }
 }
 
-export function validBody(req: Request, res: Response, next: NextFunction) {
-  //Todo check if props has valid types
-  if (req.body.name && req.body.price && checkPropLength(req.body)) {
+export function isLoggedIn(req: Request, res: Response, next: NextFunction) {
+  const isLoggedIn = true;
+  if (isLoggedIn) { //TODO Lös den här
     next();
   } else {
-    res.status(400).json({
-      message: "Invalid body",
+    res.status(401).json({
+      message: "Need to login first.",
     });
   }
 }
 
-function checkPropLength(body: Object) {
-  const bodyprops: string[] = Object.keys(body);
-  return bodyprops.length === 2;
+export function isAdmin(req: Request, res: Response, next: NextFunction) {
+  const isAdmin = true;
+  if (isAdmin) { //TODO Lös den här
+    next();
+  } else {
+    res.status(401).json({
+      message: "Unauthorized",
+    });
+  }
 }
 
-export function validateProductId(
+export function validateUserId(
   req: Request<{ id: string }>,
   res: Response,
   next: NextFunction
