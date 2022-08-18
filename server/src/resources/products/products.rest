@@ -11,8 +11,10 @@ Content-Type: application/json
 {
     "name": "Häst",
     "price": 1000
-    
 }
+
+### GET / Not found error
+GET http://localhost:3000/api/
 
 ###Post Test wrong data
 POST http://localhost:3000/api/products/
@@ -24,7 +26,7 @@ Content-Type: application/json
 }
 
 ###PUT
-PUT http://localhost:3000/api/products/1
+PUT http://localhost:3000/api/products/{}
 Content-Type: application/json
 
 {
@@ -33,4 +35,4 @@ Content-Type: application/json
 }
 
 ###Delete
-Delete http://localhost:3000/api/products/h4Be-9ksZYtKkyHeLNPHd
+Delete http://localhost:3000/api/products/delete/xOI_TxqbXSFVWLlopAfUk
