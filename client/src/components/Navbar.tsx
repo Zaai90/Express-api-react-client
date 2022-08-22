@@ -1,11 +1,10 @@
+import '../css/Navbar.css';
 
 function Navbar() {
 return (
     <div className="NavContainer">
-      <div className='logo'>       
-      </div>
         <div className='nav-links'>
-            
+            hgajfhgahjfg
         </div>
     </div>
   )
