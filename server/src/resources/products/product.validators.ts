@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { products } from "./product.repository";
 
-export function validateProductExist(
+export function validateProductNotExist(
   req: Request,
   res: Response,
   next: NextFunction
