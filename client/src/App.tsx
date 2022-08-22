@@ -3,13 +3,12 @@ import './App.css';
 import { Product } from './models/product';
 
 function App() {
-  // const [count, setCount] = useState(0)
   const [products, setProducts] = useState([] as Product[])
 
   useEffect(() => {
     fetch('/api/products').then(res => res.json()).then(data => {
       setProducts(data)
-    }).catch(err => console.log(err))
+    })
   } , []);
       
   return (
