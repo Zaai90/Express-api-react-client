@@ -6,10 +6,10 @@ import {
   deleteItem,
   getItem,
   getItems,
-  updateItem,
+  updateItem
 } from "./product.repository";
 
-export const getProducts = async (req: Request, res: Response) => {
+export const getProducts = (req: Request, res: Response) => {
   res
     .status(200)
     .json(getItems())
