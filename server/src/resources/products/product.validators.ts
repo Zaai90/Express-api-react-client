@@ -24,8 +24,8 @@ export function validateProductId(
     if (products.find((product) => product.id === req.params.id)) {
       next();
     } else {
-      res.status(204).json({
-        message: "Product not found",
+      res.status(404).json({
+        message: "Product doesn't exist found",
       });
     }
   } else {

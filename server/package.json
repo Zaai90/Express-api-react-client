@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "check": "tsc --noEmit",
-    "dev": "nodemon src/server.ts --transpile-only src/server.ts"
+    "dev": "nodemon src/server.ts --transpile-only src/server.ts --ignore ./**/*.json"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import { nanoid } from "nanoid";
 import { Product } from "./product.model";
 const dbFile = "./src/resources/infrastructure/productDb.json";
 export let products: Product[] = [];
@@ -13,6 +14,7 @@ export function getItem(id: string) {
 }
 
 export function addItem(product: Product) {
+  product.id = nanoid();
   products.push(product);
   save();
 }
@@ -23,6 +25,7 @@ export function updateItem(id: string, product: Product) {
   updatedProduct.id = id;
   products[index] = updatedProduct;
   save();
+  return index ? true : false;
 }
 
 export function deleteItem(id: string) {
