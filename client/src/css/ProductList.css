@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+.ProductContainer {
+    color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(65, 57, 57, 0.819);
+}

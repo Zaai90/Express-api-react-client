@@ -4,7 +4,7 @@ function Navbar() {
 return (
     <div className="NavContainer">
         <div className='nav-links'>
-            hgajfhgahjfg
+            <a href='/'>Home</a>
         </div>
     </div>
   )
