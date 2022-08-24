@@ -4,26 +4,18 @@ import { Product } from "../models/product";
 import ProductList from "./ProductList";
 import ProductModal from "./ProductModal";
 
+interface Props {
+  onEdit: (product: Product) => void;
+}
 
+const Main = ({ onEdit }: Props) => {
+  const [selectedProduct, setSelectedProduct] = useState(undefined as Product | undefined);
 
-const Main = () => {
-    const [showModal, setShowModal] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState(undefined as Product | undefined);
-    
-    function onEdit(product: Product){
-     setSelectedProduct(product);
-     setShowModal(true);
-    }
-    
-    return (
-        <main>
-        <ProductModal 
-      show={showModal}
-      product={selectedProduct}
-      onDelete={()=>{}} />
-      <ProductList onEdit={onEdit}/>
-        </main>
-    );
-    }
+  return (
+    <main>
+      <ProductList onEdit={onEdit} />
+    </main>
+  );
+}
 
 export default Main;
