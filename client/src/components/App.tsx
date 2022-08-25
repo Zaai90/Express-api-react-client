@@ -22,7 +22,7 @@ const App = () => {
   useEffect(() => {
     fetch('/api/products').then(res => res.json()).then(data => {
       setProducts(data)
-    }).catch(err => {
+    }).catch(() => {
       setProducts(mockedProducts)
     })
   }, []);
@@ -46,7 +46,6 @@ const App = () => {
       body: JSON.stringify(product)
     }).then(res => res.json()).then(data => {
       setProducts(products.map(p => p.id === product.id ? product : p))
-      console.log(data);
       hideModal();
     }).catch(err => {
       console.error(err);
@@ -56,29 +55,45 @@ const App = () => {
     )
   }
 
-  const onAdd = (product: Product) => {
-    fetch('/api/products', {
+  const onAdd = async (product: Product) => {
+    const response = await fetch('/api/products', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(product)
-    }).then(res => res.json()).then(data => {
-      setProducts([...products, data])
+    });
+    try {
+      const newProduct = await response.json();
+      setProducts([...products, newProduct])
       hideModal();
-    }).catch(err => {
+    } catch (err) {
       console.error(err);
-    }).finally(() => {
-      hideModal();
     }
-    )
   }
+
+  const OnDelete = (id: string) => {
+    fetch('/api/products/' + id, {
+      method: 'DELETE'
+    }).then(res => res.json()).then(() => {
+      setProducts(products.filter(p => p.id !== id))
+      hideModal();
+    });
+  }
+
+
 
   return (
     <div className="App">
       {showModal &&
-        <ProductModal product={selectedProduct} show={showModal} onHide={hideModal} mode={modalMode} onAdd={onAdd} onUpdate={onUpdate} />
-      }
+        <ProductModal
+          product={selectedProduct}
+          show={showModal}
+          onHide={hideModal}
+          mode={modalMode}
+          onAdd={onAdd}
+          onUpdate={onUpdate}
+          onDelete={OnDelete} />}
       <Header onAddClick={onShowModal} />
       < Main products={products} onEditClick={onShowModal} />
       <Footer />

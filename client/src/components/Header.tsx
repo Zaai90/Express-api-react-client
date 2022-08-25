@@ -11,8 +11,7 @@ const Header = (props: Props) => {
     return (
         <header>
             <div className='nav-links'>
-                <a href='/'>Home</a>
-                <Button variant='primary' onClick={() => { props.onAddClick(Mode.Add) }}>Add</Button>
+                <Button variant='primary' onClick={() => { props.onAddClick(Mode.Add) }}>Add Product</Button>
             </div>
         </header>
     )

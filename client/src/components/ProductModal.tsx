@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { Product } from '../models/product';
 import { Mode } from "./App";
@@ -10,6 +10,7 @@ interface Props {
     onHide: () => void;
     onAdd: (product: Product) => void;
     onUpdate: (product: Product) => void;
+    onDelete: (id: string) => void;
     mode: Mode;
 
 }
@@ -27,24 +28,21 @@ const ProductModal = (props: Props) => {
     const [show, setShow] = useState<boolean>(props.show);
     const [product, setProduct] = useState<Product>(props.product || defaultProduct());
 
+    useEffect(() => {
+        if (props.mode === Mode.Edit && props.product?.id) {
+            fetch('/api/products/' + props.product?.id).then(res => res.json()).then(data => {
+                setProduct(data)
+            }).catch(() => {
+                setProduct(props.product || defaultProduct())
+            })
+        }
+    });
+
     const onClose = () => {
         props.onHide();
         setShow(false);
     }
 
-    const OnDelete = () => {
-        fetch('/api/products/' + product!.id, {
-            method: 'DELETE'
-        }).then(res => res.json()).then(data => {
-            console.log(data);
-            onClose();
-        }).catch(err => {
-            console.error(err);
-        }).finally(() => {
-            onClose();
-        }
-        )
-    }
 
 
     const handleSubmit = (e: FormEvent) => {
@@ -69,7 +67,7 @@ const ProductModal = (props: Props) => {
                 centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>{props.mode + " " + props.product?.name}</Modal.Title>
+                    <Modal.Title>{props.mode + " " + (props.product?.name ?? "product")}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleSubmit}>
@@ -122,7 +120,7 @@ const ProductModal = (props: Props) => {
                         < Button variant="primary" type="submit">
                             {props.mode}
                         </Button>
-                        {props.mode === Mode.Edit ? <Button variant="danger" onClick={OnDelete}>
+                        {props.mode === Mode.Edit ? <Button variant="danger" onClick={() => { props.onDelete(product.id) }}>
                             Delete
                         </Button> : null}
                     </form>
