@@ -1,5 +1,4 @@
 import express from "express";
-import { isAdmin, isLoggedIn } from "../users/users.validators";
 import {
   createProduct,
   deleteProduct,
@@ -8,13 +7,12 @@ import {
   updateProduct,
   validate
 } from "./product.controller";
-import { validateProductId, validateProductNotExist } from "./product.validators";
 
 const router = express.Router();
-router.post("/", isLoggedIn, isAdmin, validate, validateProductNotExist, createProduct);
+router.post("/", validate, createProduct);
 router.get("/", getProducts);
-router.put("/:id", isLoggedIn, isAdmin, validateProductId, validate, updateProduct);
-router.delete("/:id", isLoggedIn, isAdmin, validateProductId, deleteProduct);
-router.get("/:id", validateProductId, getProduct);
+router.put("/:id", validate, updateProduct);
+router.delete("/:id", deleteProduct);
+router.get("/:id", getProduct);
 
 export default router;
