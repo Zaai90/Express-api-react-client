@@ -14,7 +14,7 @@ export const getProducts = (req: Request, res: Response) => {
     .status(200)
     .json(getItems())
     .on("error", (err: any) => {
-      console.log(err);
+      throw err;
     });
 };
 
@@ -24,8 +24,8 @@ export const createProduct = (req: Request, res: Response) => {
   res
     .status(201)
     .json(newProduct)
-    .on("error", (err: any) => {
-      console.log(err);
+    .on("error", (err: Error) => {
+      throw err;
     });
 };
 
@@ -33,19 +33,24 @@ export const deleteProduct = (req: Request<{ id: string }>, res: Response) => {
   res
     .status(204)
     .json(deleteItem(req.params.id))
-    .on("error", (err: any) => {
-      console.log(err);
+    .on("error", (err: Error) => {
+      throw err;
     });
 };
 
-export const getProduct = (req: Request<{ id: string }>, res: Response) => {
+export const getProduct = (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   const product = getItem(req.params.id);
-  res
-    .status(200)
-    .json(product)
-    .on("error", (err: any) => {
-      console.log(err);
-    });
+  if (product) {
+    res
+      .status(200)
+      .json(product)
+      .on("error", (err: Error) => {
+        throw err;
+      });
+  }
+  else {
+    next();
+  }
 };
 
 export const updateProduct = (req: Request<{ id: string }>, res: Response) => {
@@ -53,8 +58,8 @@ export const updateProduct = (req: Request<{ id: string }>, res: Response) => {
   res
     .status(200)
     .json("Success")
-    .on("error", (err: any) => {
-      console.log(err);
+    .on("error", (err: Error) => {
+      throw err;
     });
 
 };
