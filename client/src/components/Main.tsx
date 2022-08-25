@@ -1,19 +1,17 @@
-import { useState } from "react";
 import '../css/Main.css';
 import { Product } from "../models/product";
+import { Mode } from "./App";
 import ProductList from "./ProductList";
-import ProductModal from "./ProductModal";
 
 interface Props {
-  onEdit: (product: Product) => void;
+  products: Product[];
+  onEditClick: (mode: Mode, product?: Product) => void;
 }
 
-const Main = ({ onEdit }: Props) => {
-  const [selectedProduct, setSelectedProduct] = useState(undefined as Product | undefined);
-
+const Main = ({ products, onEditClick }: Props) => {
   return (
     <main>
-      <ProductList onEdit={onEdit} />
+      <ProductList products={products} onEdit={onEditClick} />
     </main>
   );
 }

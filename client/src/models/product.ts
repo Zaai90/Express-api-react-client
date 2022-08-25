@@ -1,10 +1,10 @@
 export interface Product {
-    id: string;
+    id?: string;
     name: string;
     price: number;
     category: string;
     description: string;
-    image: string;
+    imageurl: string;
 };
 
 export const mockedProducts: Product[] = [
@@ -14,7 +14,7 @@ export const mockedProducts: Product[] = [
         price: 100,
         category: 'Category 1',
         description: 'Description 1',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '2',
@@ -22,7 +22,7 @@ export const mockedProducts: Product[] = [
         price: 200,
         category: 'Category 2',
         description: 'Description 2',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '3',
@@ -30,7 +30,7 @@ export const mockedProducts: Product[] = [
         price: 300,
         category: 'Category 3',
         description: 'Description 3',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '4',
@@ -38,7 +38,7 @@ export const mockedProducts: Product[] = [
         price: 400,
         category: 'Category 4',
         description: 'Description 4',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '5',
@@ -46,7 +46,7 @@ export const mockedProducts: Product[] = [
         price: 500,
         category: 'Category 5',
         description: 'Description 5',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '6',
@@ -54,7 +54,7 @@ export const mockedProducts: Product[] = [
         price: 600,
         category: 'Category 6',
         description: 'Description 6',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '7',
@@ -62,7 +62,7 @@ export const mockedProducts: Product[] = [
         price: 700,
         category: 'Category 7',
         description: 'Description 7',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '8',
@@ -70,7 +70,7 @@ export const mockedProducts: Product[] = [
         price: 800,
         category: 'Category 8',
         description: 'Description 8',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '9',
@@ -78,7 +78,7 @@ export const mockedProducts: Product[] = [
         price: 900,
         category: 'Category 9',
         description: 'Description 9',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     },
     {
         id: '10',
@@ -86,6 +86,6 @@ export const mockedProducts: Product[] = [
         price: 1000,
         category: 'Category 10',
         description: 'Description 10',
-        image: 'https://picsum.photos/200/300',
+        imageurl: 'https://picsum.photos/200/300',
     }
 ];
