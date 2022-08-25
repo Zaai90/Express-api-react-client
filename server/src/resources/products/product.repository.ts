@@ -14,15 +14,16 @@ export function getItem(id: string) {
 }
 
 export function addItem(product: Product) {
-  product.id = nanoid();
+  addNewProductData(product);
   products.push(product);
   save();
 }
 
+
 export function updateItem(id: string, product: Product) {
   const index = products.findIndex((p) => p.id === id);
   let updatedProduct: Product = product;
-  updatedProduct.id = id;
+  addProductData(updatedProduct, index);
   products[index] = updatedProduct;
   save();
   return index ? true : false;
@@ -34,6 +35,24 @@ export function deleteItem(id: string) {
   save();
 }
 
+function addNewProductData(product: Product) {
+  product.id = nanoid();
+  product.version = 1;
+  product.createdAt = new Date();
+  product.updatedAt = new Date();
+  if (!product.imageurl || !product.imageurl.includes("jpg") || !product.imageurl.includes("png")) {
+    product.imageurl = "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
+  }
+
+}
+
+function addProductData(product: Product, index: number) {
+  product.id = products[index].id;
+  product.version = products[index].version + 1;
+  product.createdAt = products[index].createdAt;
+  product.updatedAt = new Date();
+}
+
 function save() {
   fs.writeFile(
     dbFile,
@@ -42,7 +61,7 @@ function save() {
       if (err) {
         console.log(err);
       } else {
-        console.log("Saved successfully");
+        console.log("Successfully saved products to " + dbFile);
       }
     }
   );
