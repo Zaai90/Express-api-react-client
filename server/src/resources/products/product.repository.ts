@@ -19,7 +19,6 @@ export function addItem(product: Product) {
   save();
 }
 
-
 export function updateItem(id: string, product: Product) {
   const index = products.findIndex((p) => p.id === id);
   let updatedProduct: Product = product;
