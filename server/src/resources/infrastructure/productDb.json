@@ -1,0 +1,57 @@
+[
+	{
+		"name": "Mjölk",
+		"price": 19.95,
+		"description": "Färsk mellanmjölk 1,5% 1,5L Arla",
+		"imageurl": "https://images.opv.se/v120/thumbnails/px500/ytbk2jiffxomh2ug73flsom7di000000.Png?width=512&height=543&rmode=max",
+		"category": "Mejeri",
+		"id": "rpVglsolf2yMOEEXKegHI",
+		"version": 1,
+		"createdAt": "2019-01-01T00:00:00.000Z",
+		"updatedAt": "2022-08-25T13:18:49.033Z"
+	},
+	{
+		"name": "Gurka",
+		"price": 12.5,
+		"description": "Gurka Klass 1, 325g",
+		"imageurl": "https://static.mathem.se/shared/images/products/large/gurka-klass1-4.jpg",
+		"category": "Grönsaker",
+		"id": "nyBmmsNDhCaHzbbPQZNnE",
+		"version": 1,
+		"createdAt": "2019-01-01T00:00:00.000Z",
+		"updatedAt": "2022-08-25T13:18:49.033Z"
+	},
+	{
+		"name": "Banan EKO",
+		"price": 25,
+		"description": "Fairtrade Klass1, 800g",
+		"imageurl": "https://static.mathem.se/shared/images/products/large/banan-eko-fairtrade-pase-klass1-2.jpg",
+		"category": "Frukt",
+		"id": "Kn4PTK237NfnrTDw7sXSM",
+		"version": 1,
+		"createdAt": "2019-01-01T00:00:00.000Z",
+		"updatedAt": "2022-08-25T13:18:49.033Z"
+	},
+	{
+		"name": "Blandfärs 50/50",
+		"price": 49,
+		"description": "500g",
+		"imageurl": "https://static.mathem.se/shared/images/products/large/07340062420112_c1l1.jpeg.jpg",
+		"category": "Kött",
+		"id": "uTWA5ZCeRunZhpMD8IeU5",
+		"version": 1,
+		"createdAt": "2019-01-01T00:00:00.000Z",
+		"updatedAt": "2022-08-25T13:18:49.033Z"
+	},
+	{
+		"name": "Test Produkt",
+		"price": 99,
+		"description": "Test Produkt",
+		"imageurl": "https://static.mathem.se/shared/images/products/large/07340062420112_c1l1.jpeg.jpg",
+		"category": "Övrigt",
+		"id": "pkyUBDStttvk8eONdo7Lj",
+		"version": 11,
+		"createdAt": "2019-01-01T00:00:00.000Z",
+		"updatedAt": "2022-08-25T13:54:19.808Z"
+	}
+]
