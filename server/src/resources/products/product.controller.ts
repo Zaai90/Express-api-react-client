@@ -29,17 +29,23 @@ export const createProduct = (req: Request, res: Response) => {
     });
 };
 
-export const deleteProduct = (req: Request<{ id: string }>, res: Response) => {
-  res
-    .status(204)
-    .json(deleteItem(req.params.id))
-    .on("error", (err: Error) => {
-      throw err;
-    });
+export const deleteProduct = (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+  const success = deleteItem(req.params.id);
+  if (success) {
+    res
+      .status(204)
+      .json()
+      .on("error", (err: Error) => {
+        throw err;
+      });
+  } else {
+    next();
+  }
 };
 
 export const getProduct = (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   const product = getItem(req.params.id);
+  console.log(product);
   if (product) {
     res
       .status(200)
@@ -53,15 +59,18 @@ export const getProduct = (req: Request<{ id: string }>, res: Response, next: Ne
   }
 };
 
-export const updateProduct = (req: Request<{ id: string }>, res: Response) => {
-  updateItem(req.params.id, req.body);
-  res
-    .status(200)
-    .json("Success")
-    .on("error", (err: Error) => {
-      throw err;
-    });
-
+export const updateProduct = (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+  const success = updateItem(req.params.id, req.body);
+  if (success) {
+    res
+      .status(200)
+      .json("Success")
+      .on("error", (err: Error) => {
+        throw err;
+      });
+  } else {
+    next();
+  }
 };
 
 export const validate = (req: Request, res: Response, next: NextFunction) => {

@@ -21,17 +21,22 @@ export function addItem(product: Product) {
 
 export function updateItem(id: string, product: Product) {
   const index = products.findIndex((p) => p.id === id);
-  let updatedProduct: Product = product;
-  addProductData(updatedProduct, index);
-  products[index] = updatedProduct;
-  save();
-  return index ? true : false;
+  if (index >= 0) {
+    let updatedProduct: Product = product;
+    addProductData(updatedProduct, index);
+    products[index] = updatedProduct;
+    save();
+  }
+  return index >= 0;
 }
 
 export function deleteItem(id: string) {
   const index = products.findIndex((p) => p.id === id);
-  products.splice(index, 1);
-  save();
+  if (index >= 0) {
+    products.splice(index, 1);
+    save();
+  }
+  return index >= 0;
 }
 
 function addNewProductData(product: Product) {
