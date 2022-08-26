@@ -72,16 +72,13 @@ const App = () => {
     }
   }
 
-  const OnDelete = (id: string) => {
-    fetch('/api/products/' + id, {
+  const OnDelete = async (id: string) => {
+    await fetch('/api/products/' + id, {
       method: 'DELETE'
-    }).then(res => res.json()).then(() => {
-      setProducts(products.filter(p => p.id !== id))
-      hideModal();
     });
+    setProducts(products.filter(p => p.id !== id))
+    hideModal();
   }
-
-
 
   return (
     <div className="App">
