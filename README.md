@@ -70,6 +70,5 @@ Assignment by Erik Grune
  - [x] - Alla punkter för godkänt är uppfyllda 
  - [x] - All data skall vara sparad i en JSON-fil istället för i serverfilen 
  - [x] - Datan i JSON-filen skall uppdateras då något läggs till, uppdateras eller tas bort 
- - [x] - Ett klient-gränssnitt skall byggas för att anropa API:ets alla olika endpoints och 
- presentera datan, redigeringsformulär skall fyllas i med befintlig information. 
+ - [x] - Ett klient-gränssnitt skall byggas för att anropa API:ets alla olika endpoints och presentera datan, redigeringsformulär skall fyllas i med befintlig information. 
  - [x] - Ytterligare en GET endpoint skall läggas till där det går att hämta ett specifikt objekt
