@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/products/
 
 ### Get / specific product
-GET http://localhost:3000/api/products/1BHz5hmat8MFm1vG5K0uE
+GET http://localhost:3000/api/products/pkyUBDStttvk8eONdo7Lj
 
 ### Post / create
 POST http://localhost:3000/api/products
