@@ -12,7 +12,6 @@ interface Props {
     onUpdate: (product: Product) => void;
     onDelete: (id: string) => void;
     mode: Mode;
-
 }
 
 const defaultProduct = (): Product => ({
@@ -27,36 +26,34 @@ const defaultProduct = (): Product => ({
 const ProductModal = (props: Props) => {
     const [show, setShow] = useState<boolean>(props.show);
     const [product, setProduct] = useState<Product>(props.product || defaultProduct());
+    let useEffectInProgress: boolean = false;
 
     useEffect(() => {
-        if (props.mode === Mode.Edit && props.product?.id) {
+        if (props.mode === Mode.Edit && props.product?.id && useEffectInProgress) {
+            useEffectInProgress = true;
             fetch('/api/products/' + props.product?.id).then(res => res.json()).then(data => {
                 setProduct(data)
             }).catch(() => {
                 setProduct(props.product || defaultProduct())
             })
         }
-    });
+        useEffectInProgress = false;
+    }), [];
 
     const onClose = () => {
         props.onHide();
         setShow(false);
     }
 
-
-
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         props.mode === Mode.Edit ? props.onUpdate(product) : props.onAdd(product);
     }
 
-
     const handleInputChange = <K extends keyof Product, V extends Product[K]>(key: K, value: V) => {
         const updatedProduct = { ...product, [key]: value };
         setProduct(updatedProduct);
     };
-
-
 
     return (
         <>
@@ -129,6 +126,5 @@ const ProductModal = (props: Props) => {
         </>
     );
 }
-
 
 export default ProductModal;
