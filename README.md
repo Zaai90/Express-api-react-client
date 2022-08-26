@@ -1,16 +1,17 @@
-# Express-API and React client 
+# Express-API and React client 
 
 assignment by Erik Grune
   
- ## Requirements 
+ ## Requirements 
  ``` 
  Node.js 
  npm 
  ``` 
  # Server 
+
  ## Set up 
  ``` 
- git clone https://github.com/zaai90/express-api-react-client.git
+ git clone https://github.com/Zaai90/Express-api-react-client.git
  cd server 
  npm install 
  ``` 
@@ -28,15 +29,22 @@ assignment by Erik Grune
  ## Endpoints 
   
  | Method   | URL                                      | Description                              | 
- | -------- | ---------------------------------------- | ---------------------------------------- | 
+
+ | -------- | ---------------------------------------- | ---------------------------------------- |
+
  | `GET`    | `/api/products/`                         | Retrieve all products.                   | 
+
  | `GET`    | `/api/products/{id}`                     | Retrieve product by id.                  | 
+
  | `PUT`    | `/api/products/{id}`                     | Update product by id.                    | 
+
  | `POST`   | `/api/products/`                         | Add a new product.                       | 
+
  | `DELETE` | `/api/products/{id}`                     | Delete product by id.                    | 
   
 
- # Client 
+ # Client
+
  ## Set up 
  ``` 
  cd client
