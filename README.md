@@ -1,6 +1,6 @@
 # Express-API and React client 
 
-assignment by Erik Grune
+Assignment by Erik Grune
   
  ## Requirements 
  ``` 
