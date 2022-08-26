@@ -1,38 +1,47 @@
-###Get
-GET http://localhost:3000/api/products/get
+###Get / all
+GET http://localhost:3000/api/products/
 
-###Get specific product
-GET http://localhost:3000/api/products/{nanoid}
+### Get / specific product
+GET http://localhost:3000/api/products/1BHz5hmat8MFm1vG5K0uE
 
-###Post
+### Post / create
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-    "name": "Häst",
-    "price": 1000
+    "id": "",
+    "name": "Testing Produkt",
+    "price": 123,
+    "description": "100% Testing",
+    "category": "Test",
+    "imageurl": ""
 }
+
+### PUT / update
+PUT http://localhost:3000/api/products/pkyUBDStttvk8eONdo7Lj
+Content-Type: application/json
+
+{
+    "name": "Test Produkt",
+		"price": 99,
+		"description": "Test Produkt",
+		"imageurl": "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg",
+		"category": "Övrigt"
+}
+
+### Delete / delete
+Delete http://localhost:3000/api/products/pkyUBDStttvk8eONdo7Lj
+
+### Testning
 
 ### GET / Not found error
 GET http://localhost:3000/api/
 
-###Post Test wrong data
+###Post / Test wrong data
 POST http://localhost:3000/api/products/
 Content-Type: application/json
 
 {
-    "namn": "Wrong pear",
-    "pris": 10
-}
-
-###PUT
-PUT http://localhost:3000/api/products/{}
-Content-Type: application/json
-
-{
-    "name": "Pear",
+    "name": "Päron",
     "price": 10
 }
-
-###Delete
-Delete http://localhost:3000/api/products/delete/xOI_TxqbXSFVWLlopAfUk
